@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Town extends Model
 {
     //
+    public $timestamps = false;
 }

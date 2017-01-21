@@ -15,7 +15,14 @@ class CreateTownsTable extends Migration
     {
         Schema::create('towns', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('province');
+            $table->double('population');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->double('cartodb_id');
+            $table->double('the_geom');
+            $table->boolean('cartodb_georef_status');
         });
     }
 
