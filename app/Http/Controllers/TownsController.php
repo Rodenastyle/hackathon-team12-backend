@@ -82,7 +82,13 @@ class TownsController extends Controller
                 $town +
                 $miNubeTown +
                 ["pois" => $townInterests] +
-                ['hotels' => $hotels] +
+                ['hotels' => array_map(function($value){
+                    array_map(function($rooms){
+                        array_map(function($rate){
+                            return $rate + ["sellingRate" => ""];
+                        }, $rooms["rates"]);
+                    }, $value["rooms"]);
+                }, $hotels)] +
                 ['cabifys' => $cabifys]
             , true);
     }
