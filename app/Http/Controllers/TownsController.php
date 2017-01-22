@@ -28,7 +28,14 @@ class TownsController extends Controller
     public function index($province = null)
     {
         //
-        return Town::query()->where("province", $province)->get()->toJson();
+        return Town::query()->where("province", $province)->get()->map(function($model){
+            $model->image_url = ($model->image_url) ? $model->image_url :
+                @$this->miNube->getInterestPointsByTownId(
+                    $this->miNube->getTownByName($model->name)['city_id']
+                )[0]['picture_url'] ?: "default";
+            $model->save();
+            return $model;
+        })->toJson();
     }
 
     /**
@@ -57,7 +64,19 @@ class TownsController extends Controller
             []
         ;
 
-        return json_encode($town + $miNubeTown + ["pois" => $townInterests], true);
+        $hotels = $this->hotelBeds->getHotelsByTownCoordinates(
+            ($town + $miNubeTown)['latitude'],
+            ($town + $miNubeTown)['longitude']
+        );
+
+        return json_encode(
+                $town +
+                $miNubeTown +
+                ["pois" => $townInterests] +
+                ['hotels' => array_map(function($value){
+                    return array_except($value, ['rooms']);
+                }, $hotels)]
+            , true);
     }
 
 }

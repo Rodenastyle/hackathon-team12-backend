@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SimpleBrowser;
+use SimpleHttpHeaders;
 
 class HotelBedsController extends Controller
 {
@@ -16,6 +17,11 @@ class HotelBedsController extends Controller
     {
         $this->browser = new SimpleBrowser();
         $this->apiSignature = hash("sha256", env('HOTELBEDS_APIKEY').env('HOTELBEDS_SECRET').time());
+
+        $this->browser->addHeader('X-Signature: '.$this->apiSignature);
+        $this->browser->addHeader('Api-key: '.env('HOTELBEDS_APIKEY'));
+        $this->browser->addHeader('Content-Type: application/json');
+        $this->browser->addHeader('Accept: application/json');
     }
 
     public function getHotelsByTownCoordinates($latitude, $longitude){
@@ -24,34 +30,58 @@ class HotelBedsController extends Controller
         $mockDate1 = (new \DateTime())->add($monthInterval)->format('Y-m-d');
         $mockDate2 = (new \DateTime())->add($monthInterval)->add($dayInterval)->format('Y-m-d');
 
+        $test = json_encode([
+            'stay' => [
+                'checkIn' => $mockDate1,
+                'checkOut' => $mockDate2,
+                'shiftDays' => 1
+            ],
+            'occupancies' => [
+                'rooms' => 1,
+                'adults' => 2,
+                'children' => 0,
+            ],
+            'geolocation' => [
+                'longitude' => $longitude,
+                'latitud' => $latitude,
+                'radius' => '20',
+                'unit' => 'km'
+            ]
+        ]);
+
         $hotels = $this->browser->post('https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
-            [
+            json_encode([
                 'stay' => [
                     'checkIn' => $mockDate1,
                     'checkOut' => $mockDate2,
                     'shiftDays' => 1
                 ],
                 'occupancies' => [
-                    'rooms' => 1,
-                    'adults' => 2,
-                    'paxes' => [
-                        [
-                            'type' => 'AD',
-                            'age' => 30
-                        ],
-                        [
-                            'type' => 'AD',
-                            'age' => 30
+                    [
+                        'rooms' => 1,
+                        'adults' => 2,
+                        'children' => 0,
+                        'paxes' => [
+                            [
+                                'type' => 'AD',
+                                'age' => 30
+                            ],
+                            [
+                                'type' => 'AD',
+                                'age' => 30
+                            ]
                         ]
                     ]
                 ],
                 'geolocation' => [
                     'longitude' => $longitude,
-                    'latitud' => $latitude,
-                    'radius' => '20',
+                    'latitude' => $latitude,
+                    'radius' => '200',
                     'unit' => 'km'
                 ]
-            ]
+            ])
         );
+
+        return @json_decode($hotels, true)['hotels']['hotels'] ?: [];
     }
 }

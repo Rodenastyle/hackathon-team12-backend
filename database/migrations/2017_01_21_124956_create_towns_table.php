@@ -23,6 +23,7 @@ class CreateTownsTable extends Migration
             $table->double('cartodb_id');
             $table->double('the_geom');
             $table->boolean('cartodb_georef_status');
+            $table->string('image_url')->nullable();
         });
     }
 
