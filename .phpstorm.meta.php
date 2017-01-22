@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-01-21.
+    * Generated on 2017-01-22.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -42,6 +42,7 @@ namespace PHPSTORM_META {
             'view' instanceof \Illuminate\View\Factory,
             'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
             'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
+            'Barryvdh\Cors\Stack\CorsService' instanceof \Barryvdh\Cors\Stack\CorsService,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -160,6 +161,7 @@ namespace PHPSTORM_META {
             'view' instanceof \Illuminate\View\Factory,
             'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
             'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
+            'Barryvdh\Cors\Stack\CorsService' instanceof \Barryvdh\Cors\Stack\CorsService,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -278,6 +280,7 @@ namespace PHPSTORM_META {
             'view' instanceof \Illuminate\View\Factory,
             'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
             'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
+            'Barryvdh\Cors\Stack\CorsService' instanceof \Barryvdh\Cors\Stack\CorsService,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,
@@ -396,6 +399,7 @@ namespace PHPSTORM_META {
             'view' instanceof \Illuminate\View\Factory,
             'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
             'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
+            'Barryvdh\Cors\Stack\CorsService' instanceof \Barryvdh\Cors\Stack\CorsService,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Contracts\Broadcasting\Broadcaster' instanceof \Illuminate\Broadcasting\Broadcasters\LogBroadcaster,

@@ -18,10 +18,10 @@ class CreateTownsTable extends Migration
             $table->string('name');
             $table->string('province');
             $table->double('population');
-            $table->double('latitude');
-            $table->double('longitude');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->double('cartodb_id');
-            $table->double('the_geom');
+            $table->double('the_geom')->nullable();
             $table->boolean('cartodb_georef_status');
             $table->string('image_url')->nullable();
         });
