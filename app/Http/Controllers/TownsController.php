@@ -75,9 +75,7 @@ class TownsController extends Controller
                 $town +
                 $miNubeTown +
                 ["pois" => $townInterests] +
-                ['hotels' => array_map(function($value){
-                    return array_except($value, ['rooms']);
-                }, $hotels)]
+                ['hotels' => $hotels]
             , true);
     }
 
