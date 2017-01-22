@@ -12,12 +12,14 @@ class TownsController extends Controller
     private $browser;
     private $miNube;
     private $hotelBeds;
+    private $cabifys;
 
     public function __construct()
     {
         $this->browser = new SimpleBrowser();
         $this->miNube = new MiNubeController();
         $this->hotelBeds = new HotelBedsController();
+        $this->cabifys = new CabifyController();
     }
 
     /**
@@ -71,11 +73,17 @@ class TownsController extends Controller
             ($town + $miNubeTown)['longitude']
         );
 
+        $cabifys = $this->cabifys->getEstimationByCoordinates(
+            ($town + $miNubeTown)['latitude'],
+            ($town + $miNubeTown)['longitude']
+        );
+
         return json_encode(
                 $town +
                 $miNubeTown +
                 ["pois" => $townInterests] +
-                ['hotels' => $hotels]
+                ['hotels' => $hotels] +
+                ['cabifys' => $cabifys]
             , true);
     }
 
