@@ -60,7 +60,9 @@ class TownsController extends Controller
         ) ?: [];
 
         $townInterests = ( ! empty($miNubeTown)) ?
-            $this->miNube->getInterestPointsByTownId($miNubeTown['city_id']) :
+            array_map(function($value){
+                return $value + ['picture_url' => 'default'];
+            }, $this->miNube->getInterestPointsByTownId($miNubeTown['city_id'])) :
             []
         ;
 
