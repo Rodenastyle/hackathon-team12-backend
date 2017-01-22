@@ -63,8 +63,6 @@ class HotelBedsController extends Controller
             ])
         );
 
-        dd($hotels);
-
         return @json_decode($hotels, true)['hotels']['hotels'] ?: [];
     }
 }
