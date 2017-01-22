@@ -57,7 +57,7 @@ class HotelBedsController extends Controller
                 'geolocation' => [
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'radius' => '200',
+                    'radius' => '20',
                     'unit' => 'km'
                 ]
             ])
