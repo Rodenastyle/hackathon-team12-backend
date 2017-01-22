@@ -30,25 +30,6 @@ class HotelBedsController extends Controller
         $mockDate1 = (new \DateTime())->add($monthInterval)->format('Y-m-d');
         $mockDate2 = (new \DateTime())->add($monthInterval)->add($dayInterval)->format('Y-m-d');
 
-        $test = json_encode([
-            'stay' => [
-                'checkIn' => $mockDate1,
-                'checkOut' => $mockDate2,
-                'shiftDays' => 1
-            ],
-            'occupancies' => [
-                'rooms' => 1,
-                'adults' => 2,
-                'children' => 0,
-            ],
-            'geolocation' => [
-                'longitude' => $longitude,
-                'latitud' => $latitude,
-                'radius' => '20',
-                'unit' => 'km'
-            ]
-        ]);
-
         $hotels = $this->browser->post('https://api.test.hotelbeds.com/hotel-api/1.0/hotels',
             json_encode([
                 'stay' => [
