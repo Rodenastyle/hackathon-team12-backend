@@ -57,11 +57,13 @@ class HotelBedsController extends Controller
                 'geolocation' => [
                     'longitude' => $longitude,
                     'latitude' => $latitude,
-                    'radius' => '250',
+                    'radius' => '180',
                     'unit' => 'km'
                 ]
             ])
         );
+
+        dd($hotels);
 
         return @json_decode($hotels, true)['hotels']['hotels'] ?: [];
     }
