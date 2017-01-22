@@ -87,7 +87,9 @@ class TownsController extends Controller
                         array_map(function($rate){
                             return $rate + ["sellingRate" => ""];
                         }, $rooms["rates"]);
+                        return $rooms;
                     }, $value["rooms"]);
+                    return $value;
                 }, $hotels)] +
                 ['cabifys' => $cabifys]
             , true);
