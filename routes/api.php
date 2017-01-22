@@ -15,4 +15,8 @@ use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api');
+});
+
+Route::get('provinces/{province}/towns', 'TownsController@index');
+Route::get('towns/{town}', 'TownsController@show');
+Route::get('towns/carto/{cartodbid}', 'TownsController@showByCartoId');
