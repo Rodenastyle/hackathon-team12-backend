@@ -41,6 +41,9 @@ class MiNubeController extends Controller
             ]
         );
 
-        return json_decode($query, true) ?: [];
+        return array_map(function($value){
+            $value['picture_url'] = ($value['picture_url']) ? $value['picture_url'] : "default";
+            return $value;
+        }, json_decode($query, true)) ?: [];
     }
 }
