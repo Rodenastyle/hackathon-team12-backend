@@ -19,3 +19,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('provinces/{province}/towns', 'TownsController@index');
 Route::get('towns/{town}', 'TownsController@show');
+Route::get('towns/carto/{cartodbid}', 'TownsController@showByCartoId');

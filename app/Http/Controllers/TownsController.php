@@ -79,4 +79,10 @@ class TownsController extends Controller
             , true);
     }
 
+    public function showByCartoId($cartoId){
+        return $this->show(
+            Town::query()->where('cartodb_id', $cartoId)->firstOrFail()->id
+        ) ?: json_encode([]);
+    }
+
 }
